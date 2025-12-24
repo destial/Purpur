@@ -1,0 +1,11 @@
+--- a/src/main/java/io/papermc/paper/util/MappingEnvironment.java
++++ b/src/main/java/io/papermc/paper/util/MappingEnvironment.java
+@@ -11,7 +_,7 @@
+ @DefaultQualifier(NonNull.class)
+ public final class MappingEnvironment {
+     public static final boolean DISABLE_PLUGIN_REMAPPING = Boolean.getBoolean("paper.disablePluginRemapping");
+-    public static final String LEGACY_CB_VERSION = "v1_21_R7";
++    public static final String LEGACY_CB_VERSION = "v1_21_R6";
+     private static final @Nullable String MAPPINGS_HASH = readMappingsHash();
+     private static final boolean REOBF = checkReobf();
+ 

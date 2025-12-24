@@ -231,3 +231,12 @@
              LOGGER.warn(
                  "Player {} tried to change game mode to {} without required permissions",
                  this.player.getGameProfile().name(),
+@@ -3695,7 +_,7 @@
+         this.waitingForRespawn = true;
+     }
+ 
+-    public void restartClientLoadTimerAfterRespawn() {
++    private void restartClientLoadTimerAfterRespawn() {
+         this.waitingForRespawn = false;
+         this.clientLoadedTimeoutTimer = 60;
+     }

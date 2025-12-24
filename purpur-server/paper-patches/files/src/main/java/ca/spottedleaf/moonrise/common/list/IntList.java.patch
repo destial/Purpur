@@ -1,0 +1,17 @@
+--- a/src/main/java/ca/spottedleaf/moonrise/common/list/IntList.java
++++ b/src/main/java/ca/spottedleaf/moonrise/common/list/IntList.java
+@@ -20,14 +_,10 @@
+     }
+ 
+     public void setMinCapacity(final int len) {
+-        if (len <= 0) {
+-            return;
+-        }
+         final int[] byIndex = this.byIndex;
+         if (byIndex.length < len) {
+             this.byIndex = Arrays.copyOf(byIndex, len);
+         }
+-        this.map.ensureCapacity(len);
+     }
+ 
+     public int getRaw(final int index) {

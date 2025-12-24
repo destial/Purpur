@@ -1,0 +1,14 @@
+--- a/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkTaskScheduler.java
++++ b/ca/spottedleaf/moonrise/patches/chunk_system/scheduling/ChunkTaskScheduler.java
+@@ -487,9 +_,9 @@
+         final long chunkKey = CoordinateUtils.getChunkKey(chunkX, chunkZ);
+         final int minLevel = ChunkTaskScheduler.getTicketLevel(toStatus);
+         final List<ChunkProgressionTask> tasks = new ArrayList<>();
+-        final ReentrantAreaLock.Node ticketLock = this.chunkHolderManager.ticketLockArea.lock(chunkX, chunkZ, accessRadius);
++        final ReentrantAreaLock.Node ticketLock = this.chunkHolderManager.ticketLockArea.lock(chunkX, chunkZ, accessRadius); // Folia - use area based lock to reduce contention
+         try {
+-            final ReentrantAreaLock.Node schedulingLock = this.schedulingLockArea.lock(chunkX, chunkZ, accessRadius);
++            final ReentrantAreaLock.Node schedulingLock = this.schedulingLockArea.lock(chunkX, chunkZ, accessRadius); // Folia - use area based lock to reduce contention
+             try {
+                 final NewChunkHolder chunkHolder = this.chunkHolderManager.getChunkHolder(chunkKey);
+                 if (chunkHolder == null || chunkHolder.getTicketLevel() > minLevel) {
