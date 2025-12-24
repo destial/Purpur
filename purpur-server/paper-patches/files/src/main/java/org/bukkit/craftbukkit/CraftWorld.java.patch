@@ -1,19 +1,9 @@
 --- a/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftWorld.java
-@@ -856,8 +_,6 @@
-             explosionType = net.minecraft.world.level.Level.ExplosionInteraction.NONE; // Don't break blocks
-         } else if (source == null) {
-             explosionType = net.minecraft.world.level.Level.ExplosionInteraction.STANDARD; // Break blocks, don't decay drops
--        } else if (source instanceof org.bukkit.entity.minecart.ExplosiveMinecart || source instanceof org.bukkit.entity.TNTPrimed) {
--            explosionType = net.minecraft.world.level.Level.ExplosionInteraction.TNT;
-         } else {
-             explosionType = net.minecraft.world.level.Level.ExplosionInteraction.MOB; // Respect mobGriefing gamerule
-         }
-@@ -1932,6 +_,52 @@
-     public DragonBattle getEnderDragonBattle() {
+@@ -1931,6 +_,52 @@
          return (this.getHandle().getDragonFight() == null) ? null : new CraftDragonBattle(this.getHandle().getDragonFight());
      }
-+
+ 
 +    // Purpur start - Add local difficulty api
 +    public float getLocalDifficultyAt(Location location) {
 +        return getHandle().getCurrentDifficultyAt(org.bukkit.craftbukkit.util.CraftLocation.toBlockPosition(location)).getEffectiveDifficulty();
@@ -59,6 +49,7 @@
 +        //net.minecraft.network.protocol.game.DebugPackets.sendGameTestClearPacket(getHandle());
 +    }
 +    // Purpur end - Debug Marker API
- 
++
      @Override
      public Collection<GeneratedStructure> getStructures(int x, int z) {
+         return this.getStructures(x, z, struct -> true);

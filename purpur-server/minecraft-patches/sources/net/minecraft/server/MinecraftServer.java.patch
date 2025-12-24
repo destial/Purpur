@@ -50,15 +50,6 @@
          this.isRestarting = isRestarting;
          this.hasLoggedStop = true; // Paper - Debugging
          if (isDebugging()) io.papermc.paper.util.TraceUtil.dumpTraceForThread("Server stopped"); // Paper - Debugging
-@@ -1137,7 +_,7 @@
-             interval = 0L;
-         }
-         this.tickSchedule.setNextPeriod(this.nextTickTimeNanos, interval);
--        this.lastTickStart = ca.spottedleaf.concurrentutil.util.TimeUtil.DEADLINE_NOT_SET;
-+        this.lastTickStart = ca.spottedleaf.concurrentutil.scheduler.SchedulerThreadPool.DEADLINE_NOT_SET;
-         this.scheduledTickStart = this.tickSchedule.getDeadline(interval);
-     }
- 
 @@ -1291,6 +_,16 @@
              }
              // Paper end - Add onboarding message for initial server start

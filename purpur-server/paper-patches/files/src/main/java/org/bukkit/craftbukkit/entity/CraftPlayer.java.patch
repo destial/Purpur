@@ -98,10 +98,11 @@
      @Override
      public void sendBlockDamage(Location loc, float progress, org.bukkit.entity.Entity source) {
          Preconditions.checkArgument(source != null, "source must not be null");
-@@ -2496,6 +_,28 @@
+@@ -2495,6 +_,28 @@
+     public float getWalkSpeed() {
          return this.getHandle().getAbilities().walkingSpeed * 2f;
      }
- 
++
 +    // Purpur start - OfflinePlayer API
 +    @Override
 +    public boolean teleportOffline(Location destination) {
@@ -123,15 +124,6 @@
 +        return this.teleportAsync(destination, cause);
 +    }
 +    // Purpur end - OfflinePlayer API
-+
+ 
      private void validateSpeed(float value) {
          Preconditions.checkArgument(value <= 1f && value >= -1f, "Speed value (%s) need to be between -1f and 1f", value);
-     }
-@@ -3036,7 +_,6 @@
-         public void respawn() {
-             if (CraftPlayer.this.getHealth() <= 0 && CraftPlayer.this.isOnline()) {
-                 CraftPlayer.this.server.getServer().getPlayerList().respawn(CraftPlayer.this.getHandle(), false, Entity.RemovalReason.KILLED, org.bukkit.event.player.PlayerRespawnEvent.RespawnReason.PLUGIN);
--                CraftPlayer.this.getHandle().connection.restartClientLoadTimerAfterRespawn();
-             }
-         }
- 
